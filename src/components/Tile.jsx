@@ -15,6 +15,7 @@ export const Tile = ({
     <div className="tile">
       {!isRevealed && (
         <button
+          className="tile-button"
           onContextMenu={(e) => {
             setFlag(x, y);
             e.preventDefault();

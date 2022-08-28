@@ -30,9 +30,7 @@ export const generateBoard = (boardHeight, boardWidth, mineCount) => {
   for (let i = 0; i < boardHeight; i++)
     for (let j = 0; j < boardWidth; j++) {
       const neighborArray = getNeighbors(i, j, boardHeight, boardWidth);
-      //console.log(neighborArray);
       neighborArray.forEach(([x, y]) => {
-        //console.log(x,y);
         if (board[x][y].isMine) board[i][j].value++;
       });
     }

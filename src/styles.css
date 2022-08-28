@@ -34,7 +34,7 @@
     background-color: darkgray;
   }
   
-  button {
+  .tile-button {
     position: absolute;
     top: 0;
     left: 0;
@@ -75,7 +75,7 @@
   }
 
   .Header{
-    color: red;
+    color: whitesmoke;
     background-color: grey;
     display: flex;
     justify-content: space-between;
@@ -94,4 +94,20 @@
 
   .Mine-1{
     background: red;
+  }
+
+  form {
+    display: grid;
+    color: black;
+  }
+
+  input {
+    background: none;
+    color: black;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+  }
+
+  label {
   }
