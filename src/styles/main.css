@@ -1,0 +1,55 @@
+@import "./form.css";
+@import "./modal.css";
+@import "./board.css";
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+    font-family: sans-serif;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(to left bottom, #6a5bbf, #1882dd, #00a3e7, #00c0e3, #4bd9d9);
+  }
+  
+  input {
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    width: 50px;
+    text-align: center;
+  }
+
+  .board-container {
+    background: transparent;
+    display: grid;
+    place-items: center;
+    justify-content: space-between;
+    border-radius: 5%;
+    width: fit-content;
+    box-shadow: 5px 5px 10px 5px gray;
+    padding: 20px;
+  }
+
+  .Parent {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    place-items: center;
+    height: 100%;
+    width: 100%;
+  }
+
+.container {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  width: 100%;
+}
+

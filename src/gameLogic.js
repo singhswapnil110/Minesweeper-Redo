@@ -18,11 +18,12 @@ export const generateBoard = (boardHeight, boardWidth, mineCount) => {
     }
   }
 
-  for (let i = 0; i < mineCount; ) {
+  while (mineCount) {
     const randomY = getRandomInt(boardWidth);
     const randomX = getRandomInt(boardHeight);
+    console.log(mineCount);
     if (!board[randomX][randomY].isMine) {
-      i++;
+      mineCount--;
       board[randomX][randomY].isMine = true;
     }
   }
@@ -44,12 +45,12 @@ function getNeighbors(i, j, boardHeight, boardWidth) {
     [i, j - 1],
     [i + 1, j - 1],
     [i - 1, j],
+    [i, j],
     [i + 1, j],
     [i - 1, j + 1],
     [i, j + 1],
     [i + 1, j + 1],
   ];
-  //console.log(neighborArray);
   neighborArray.forEach(([x, y]) => {
     if (x > -1 && y > -1 && x < boardHeight && y < boardWidth) {
       neighbors.push([x, y]);
@@ -73,7 +74,8 @@ export const revealTiles = (x, y, board) => {
     let neighborArray = getNeighbors(x, y, boardHeight, boardWidth);
     neighborArray.forEach(([x, y]) => {
       if (
-        (!board[x][y].isFlagged || !board[x][y].isMine) &&
+        !board[x][y].isFlagged &&
+        !board[x][y].isMine &&
         !board[x][y].isRevealed
       )
         board = revealTiles(x, y, board);

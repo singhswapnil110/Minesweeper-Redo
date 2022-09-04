@@ -1,37 +1,15 @@
-:root {
-  --board-height: 8;
-  --board-width: 8;
-}
-
-.App {
-    font-family: sans-serif;
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: whitesmoke;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .Board {
-    min-width: 20%;
-    min-height: 20%;
-    max-width: 80%;
-    max-height: 80%;
+.Board {
     display: grid;
-    grid-template-rows: repeat(var(--board-height), 1fr);
-    grid-template-columns: repeat(var(--board-width), 1fr);
     place-items: center;
+    width: fit-content;
+    margin: 10px;
+    border: 1px solid brown;
   }
   
   .tile {
     min-width: 25px;
     min-height: 25px;
     position: relative;
-    border: cornsilk solid 1px;
-    background-color: darkgray;
   }
   
   .tile-button {
@@ -41,7 +19,6 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    background-color: grey;
   }
   
   img {
@@ -76,38 +53,23 @@
 
   .Header{
     color: whitesmoke;
-    background-color: grey;
     display: flex;
     justify-content: space-between;
     padding: 10px;
     font-size: 30px;
-    height: 30%;
+    width: 100%;
   }
 
   .Header-item {
-    background-color: black;
-    height: 50px;
-    width: 100px;
+    background: black;
+    height: 70px;
+    width: 70px;
+    padding: 10px;
+    border-radius: 60%;
     display: grid;
     place-items: center;
   }
 
   .Mine-1{
     background: red;
-  }
-
-  form {
-    display: grid;
-    color: black;
-  }
-
-  input {
-    background: none;
-    color: black;
-    height: 50px;
-    width: 50px;
-    text-align: center;
-  }
-
-  label {
   }

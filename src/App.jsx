@@ -1,4 +1,4 @@
-import "./styles.css";
+import "./styles/main.css";
 import { Board } from "./components/Board";
 
 export default function App() {

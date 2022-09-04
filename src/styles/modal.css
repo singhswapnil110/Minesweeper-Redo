@@ -1,0 +1,30 @@
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(250, 220, 240, 0.7);
+    display: grid;
+    place-items: center;
+    z-index: 2;
+  }
+
+  .modal-form {
+    background-color: rgb(255, 255, 255);
+    opacity: 1;
+    width: 400px;
+    display: grid;
+    place-items: center;
+    color: black;
+    border-radius: 10px;
+    z-index: 3;
+  }
+
+  .win {
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+  }
+
+  .lose {
+    grid-template-rows: 1fr 1fr 1fr;
+  }
