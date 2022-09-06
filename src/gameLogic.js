@@ -21,7 +21,6 @@ export const generateBoard = (boardHeight, boardWidth, mineCount) => {
   while (mineCount) {
     const randomY = getRandomInt(boardWidth);
     const randomX = getRandomInt(boardHeight);
-    console.log(mineCount);
     if (!board[randomX][randomY].isMine) {
       mineCount--;
       board[randomX][randomY].isMine = true;

@@ -1,0 +1,32 @@
+.sidebar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wall-button {
+    border-radius: 10px;
+    width: 80%;
+    height: 50px;
+    margin: 20px 0;
+    font-size: 1rem;
+  }
+
+.toggle-button {
+    position: relative;
+    margin: 10px 0;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+.toggle-button img {
+    top: 10%;
+    left: 10%;
+    height: 80%;
+    width: 80%;
+  }

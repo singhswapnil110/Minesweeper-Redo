@@ -4,21 +4,32 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(250, 220, 240, 0.7);
     display: grid;
     place-items: center;
     z-index: 2;
   }
 
   .modal-form {
-    background-color: rgb(255, 255, 255);
-    opacity: 1;
-    width: 400px;
+    width: 600px;
+    padding: 10px 0;
     display: grid;
     place-items: center;
-    color: black;
     border-radius: 10px;
     z-index: 3;
+  }
+
+  .modal-button-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .modal-buttons {
+    height: 50px;
+    width: 150px;
+    font-size: 1rem;
+    border-radius: 10px;
   }
 
   .win {
@@ -27,4 +38,12 @@
 
   .lose {
     grid-template-rows: 1fr 1fr 1fr;
+  }
+
+  .cancel {
+    background: #F44336;
+  }
+
+  .save {
+    background: #4CAF50;
   }

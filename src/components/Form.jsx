@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { useTheme } from "../customHooks";
 import { FormInput } from "./FormInput";
+import { styles } from "../styles/themeStyles";
 
 export const Form = ({ handleSubmit }) => {
+  const theme = useTheme();
   const [boardValues, setBoardValues] = useState({
     rows: 10,
     columns: 10,
@@ -45,8 +48,6 @@ export const Form = ({ handleSubmit }) => {
       columns: columnMessage,
       mines: mineMessage,
     });
-
-    console.log(rows);
   };
 
   function updateValue(name, value, addon) {
@@ -91,7 +92,10 @@ export const Form = ({ handleSubmit }) => {
   ];
 
   return (
-    <div className="form-container">
+    <div
+      className="form-container"
+      style={styles[`${theme}`].FormStyles.formContainer}
+    >
       {inputArray.map((inputField) => (
         <FormInput
           key={inputField.id}
@@ -108,6 +112,7 @@ export const Form = ({ handleSubmit }) => {
         onClick={() =>
           handleSubmit(boardValues.rows, boardValues.columns, boardValues.mines)
         }
+        style={styles[`${theme}`].FormStyles.formSubmit}
       >
         Create
       </button>

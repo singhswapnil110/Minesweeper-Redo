@@ -1,12 +1,22 @@
 .form-container {
-    background-color: black;
     flex-direction: column;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 0px 10px;
-    border: white 1px solid;
-    height: 100%;
+    box-shadow: 0 0 10px 5px rgba(0,0,0,0.2);
+    padding: 10px;
+    margin: 0px 20px;
+    border-radius: 10px;
+    height: fit-content;
+  }
+
+  .form-input-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .input-elements {
@@ -31,10 +41,8 @@
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background-color: whitesmoke;
-    font-size: 2rem;
-    cursor: pointer;
-    color: black;
+    font-size: 1.5rem;
+    box-shadow: 0 0 12px 3px rgba(0,0,0,0.2);
   }
 
   input[type=number]::-webkit-inner-spin-button, 
@@ -46,16 +54,20 @@ input[type=number]::-webkit-outer-spin-button {
 .error-message {
   text-align: center;
   width: 150px;
+  height: 15px;
   line-height: 18px;
   color: red;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
 }
 
 .form-submit {
-  background: rebeccapurple;
   height: 50px;
-  font-size: 1.2rem;
+  font-size: 1rem;
   width: 120px;
   border-radius: 5px;
   cursor: pointer;
+}
+
+.inputBox {
+  width: 50px;
 }

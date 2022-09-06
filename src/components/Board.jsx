@@ -1,17 +1,27 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useContext } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { useTheme } from "../customHooks";
 import { generateBoard, revealTiles, revealAllTiles } from "../gameLogic";
 import { Tile } from "./Tile";
-import { Form } from "./Form";
-import { Modal } from "./Modal";
+import { WinLossModal } from "./WinLossModal";
+import { HighScoreModal } from "./HighScoreModal";
+import { Sidebar } from "./Sidebar";
+import { styles } from "../styles/themeStyles";
+import { dummyScoreData } from "../dummyScoreData";
+
 export const Board = () => {
+  const theme = useTheme();
   const [mines, setMines] = useState(10);
   const [board, setBoard] = useState([[]]);
   const [mineCount, setMineCount] = useState(mines);
   const [timer, setTimer] = useState(0);
   const [isLive, setLive] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+  const [modalStatus, setModalStatus] = useState({
+    winLossModal: false,
+    highScoreModal: false,
+  });
   const [gameStatus, setGameStatus] = useState(0); // 0 - No Result, 1 - Game Lost, 2 - Game Won
+  const [scoreList, setScoreList] = useState(dummyScoreData);
 
   useEffect(() => {
     if (isLive)
@@ -28,6 +38,10 @@ export const Board = () => {
     setBoard(generateBoard(10, 10, mines));
   }, []);
 
+  function updateModalStatus(name, value) {
+    setModalStatus({ ...modalStatus, [name]: value });
+  }
+
   function createBoard(rows, columns, mines) {
     setBoard(generateBoard(rows, columns, mines));
     setMines(mines);
@@ -35,7 +49,7 @@ export const Board = () => {
     setLive(false);
     setTimer(0);
     setGameStatus(0);
-    setShowModal(false);
+    updateModalStatus("winLossModal", false);
   }
 
   function resetBoard() {
@@ -61,9 +75,28 @@ export const Board = () => {
       revealedCheck == board.length * board[0].length - mines
     ) {
       setGameStatus(2);
-      setShowModal(true);
+      updateModalStatus("winLossModal", true);
       setLive(false);
     }
+  }
+
+  function saveSuccess(name) {
+    const newScoreList = [...scoreList];
+    const score = Math.floor(
+      (mines * mines * mines * 1000) / (timer * board.length * board[0].length)
+    );
+    const scoreObj = {
+      name: name,
+      score: score,
+      boardDetails: {
+        rows: board.length,
+        columns: board[0].length,
+        mines: mines,
+      },
+    };
+    newScoreList.push(scoreObj);
+    newScoreList.sort((a, b) => (a.score < b.score ? 1 : -1));
+    setScoreList(newScoreList);
   }
 
   function setFlag(x, y) {
@@ -87,7 +120,7 @@ export const Board = () => {
         newBoard = revealAllTiles(newBoard);
         setLive(false);
         setGameStatus(1);
-        setShowModal(true);
+        updateModalStatus("winLossModal", true);
       } else if (board[x][y].value) newBoard[x][y].isRevealed = true;
       else {
         newBoard = revealTiles(x, y, newBoard);
@@ -99,18 +132,41 @@ export const Board = () => {
 
   return (
     <div className="Parent">
-      {showModal && (
-        <Modal
+      {modalStatus.winLossModal && (
+        <WinLossModal
           gameStatus={gameStatus}
-          setShowModal={setShowModal}
+          updateModalStatus={updateModalStatus}
           resetBoard={resetBoard}
+          saveSuccess={saveSuccess}
         />
       )}
-      <div className="container">
-        <div className="board-container">
-          <div className="Header">
-            <div className="Header-item">{timer}</div>
-            <div className="Header-item">{mineCount}</div>
+      {modalStatus.highScoreModal && (
+        <HighScoreModal
+          updateModalStatus={updateModalStatus}
+          scoreList={scoreList}
+        />
+      )}
+      <div
+        className="container"
+        style={styles[`${theme}`].BoardStyles.container}
+      >
+        <div
+          className="board-container"
+          style={styles[`${theme}`].BoardStyles.boardContainer}
+        >
+          <div className="Header" style={styles[`${theme}`].BoardStyles.header}>
+            <div
+              className="Header-item"
+              style={styles[`${theme}`].BoardStyles.headerItem}
+            >
+              {timer}
+            </div>
+            <div
+              className="Header-item"
+              style={styles[`${theme}`].BoardStyles.headerItem}
+            >
+              {mineCount}
+            </div>
           </div>
           <div
             className="Board"
@@ -132,7 +188,10 @@ export const Board = () => {
           </div>
         </div>
       </div>
-      <Form handleSubmit={createBoard} />
+      <Sidebar
+        createBoard={createBoard}
+        updateModalStatus={updateModalStatus}
+      />
     </div>
   );
 };

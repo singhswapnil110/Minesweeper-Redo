@@ -1,6 +1,7 @@
 @import "./form.css";
 @import "./modal.css";
 @import "./board.css";
+@import "./sideBar.css";
 
 body {
   margin: 0;
@@ -15,7 +16,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: linear-gradient(to left bottom, #6a5bbf, #1882dd, #00a3e7, #00c0e3, #4bd9d9);
   }
   
   input {
@@ -23,18 +23,16 @@ body {
     border: none;
     outline: none;
     font-size: 1rem;
-    width: 50px;
     text-align: center;
   }
 
   .board-container {
-    background: transparent;
     display: grid;
     place-items: center;
     justify-content: space-between;
-    border-radius: 5%;
+    border-radius: 20px;
     width: fit-content;
-    box-shadow: 5px 5px 10px 5px gray;
+    box-shadow: 0px 0px 25px 10px rgba(0,0,0,0.2);
     padding: 20px;
   }
 
@@ -53,3 +51,11 @@ body {
   width: 100%;
 }
 
+button{
+  border: none;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+}
