@@ -18,6 +18,25 @@
     z-index: 3;
   }
 
+  .modal-form[visible="false"] {
+    opacity: 0;
+  }
+
+  .modal[visible="false"] {
+    opacity: 0;
+    z-index: -1;
+  }
+
+  .modal[visible="true"] {
+    opacity: 1;
+    transition: opacity 1s;
+  }
+
+  .modal-form[visible="true"] {
+    opacity: 1;
+    transition: opacity 5s;
+  }
+
   .modal-button-group {
     display: flex;
     align-items: center;

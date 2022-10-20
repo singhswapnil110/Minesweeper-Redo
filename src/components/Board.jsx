@@ -21,7 +21,9 @@ export const Board = () => {
     highScoreModal: false,
   });
   const [gameStatus, setGameStatus] = useState(0); // 0 - No Result, 1 - Game Lost, 2 - Game Won
-  const [scoreList, setScoreList] = useState(dummyScoreData);
+  const [scoreList, setScoreList] = useState(
+    JSON.parse(localStorage.getItem("scoreList")) || dummyScoreData
+  );
 
   useEffect(() => {
     if (isLive)
@@ -97,6 +99,7 @@ export const Board = () => {
     newScoreList.push(scoreObj);
     newScoreList.sort((a, b) => (a.score < b.score ? 1 : -1));
     setScoreList(newScoreList);
+    localStorage.setItem("scoreList", JSON.stringify(newScoreList));
   }
 
   function setFlag(x, y) {
@@ -132,20 +135,18 @@ export const Board = () => {
 
   return (
     <div className="Parent">
-      {modalStatus.winLossModal && (
-        <WinLossModal
-          gameStatus={gameStatus}
-          updateModalStatus={updateModalStatus}
-          resetBoard={resetBoard}
-          saveSuccess={saveSuccess}
-        />
-      )}
-      {modalStatus.highScoreModal && (
-        <HighScoreModal
-          updateModalStatus={updateModalStatus}
-          scoreList={scoreList}
-        />
-      )}
+      <WinLossModal
+        gameStatus={gameStatus}
+        updateModalStatus={updateModalStatus}
+        resetBoard={resetBoard}
+        saveSuccess={saveSuccess}
+        visible={modalStatus.winLossModal}
+      />
+      <HighScoreModal
+        updateModalStatus={updateModalStatus}
+        scoreList={scoreList}
+        visible={modalStatus.highScoreModal}
+      />
       <div
         className="container"
         style={styles[`${theme}`].BoardStyles.container}

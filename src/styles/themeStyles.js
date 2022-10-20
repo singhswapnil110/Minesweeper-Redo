@@ -1,27 +1,43 @@
+const colors = {
+  dark: {
+    primary: "rgb(66, 63, 62)",
+    secondary: "rgb(43, 43, 43)",
+    tertiary: "rgb(23, 16, 16)",
+    contrast: "#E7F6F2",
+  },
+  light: {
+    primary: "#E7F6F2",
+    secondary: "#A5C9CA",
+    tertiary: "",
+    contrast: "",
+  },
+};
+
 export const styles = {
   dark: {
     BoardStyles: {
       boardContainer: {
-        background: "gray",
+        background: colors.dark.secondary,
       },
       header: {
         background: "whitesmoke",
       },
       headerItem: {
-        background: "grey",
+        background: "black",
         color: "whitesmoke",
       },
       container: {
-        background: "gray",
+        background: colors.dark.primary,
+        color: "black",
       },
     },
     FormStyles: {
       formContainer: {
-        background: "gray",
+        background: colors.dark.secondary,
       },
       formSubmit: {
-        background: "whitesmoke",
-        color: "black",
+        background: colors.dark.contrast,
+        color: "purple",
       },
     },
     FormInputStyles: {
@@ -29,7 +45,8 @@ export const styles = {
         color: "whitesmoke",
       },
       updateButtons: {
-        background: "rgb(255, 76, 41)",
+        color: "purple",
+        background: "whitesmoke",
       },
     },
     ModalStyles: {
@@ -43,21 +60,21 @@ export const styles = {
     },
     Sidebar: {
       sidebarContainer: {
-        background: "#0F0F0F",
+        background: colors.dark.primary,
       },
       toggleButton: {
         background: "skyblue",
       },
       wallButton: {
-        background: "orange",
+        background: colors.dark.contrast,
       },
     },
     TileStyles: {
       tileButton: {
-        background: "grey",
+        background: colors.dark.tertiary,
       },
       tile: {
-        border: "0.5px solid purple",
+        border: "0.5px solid gray",
       },
     },
   },

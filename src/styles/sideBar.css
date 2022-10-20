@@ -16,17 +16,16 @@
 
 .toggle-button {
     position: relative;
-    margin: 10px 0;
-    width: 90px;
-    height: 90px;
+    margin: 20px 0px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    overflow: hidden;
+    display: grid;
+    place-items: center;
     cursor: pointer;
   }
 
 .toggle-button img {
-    top: 10%;
-    left: 10%;
-    height: 80%;
-    width: 80%;
+    height: 70%;
+    width: 70%;
   }

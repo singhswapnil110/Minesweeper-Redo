@@ -7,6 +7,7 @@ export const WinLossModal = ({
   updateModalStatus,
   resetBoard,
   saveSuccess,
+  visible,
 }) => {
   const theme = useTheme();
   const modalRef = useClickOutside(() =>
@@ -15,12 +16,17 @@ export const WinLossModal = ({
   const inputRef = useRef();
 
   return (
-    <div className="modal" style={styles[`${theme}`].ModalStyles.modal}>
+    <div
+      className="modal"
+      style={styles[`${theme}`].ModalStyles.modal}
+      visible={visible.toString()}
+    >
       {gameStatus == 2 ? (
         <div
           className="modal-form win"
           ref={modalRef}
           style={styles[`${theme}`].ModalStyles.modalForm}
+          visible={visible.toString()}
         >
           <h2>Congratulations, You Won</h2>
           <p>Kindly enter your name to feature on the wall of fame</p>
@@ -35,7 +41,11 @@ export const WinLossModal = ({
             <button
               className="modal-buttons save"
               onClick={() => {
-                saveSuccess(inputRef.current.value);
+                if (
+                  inputRef.current.value &&
+                  inputRef.current.value.trim() != ""
+                )
+                  saveSuccess(inputRef.current.value);
                 resetBoard();
               }}
             >

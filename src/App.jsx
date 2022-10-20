@@ -5,10 +5,13 @@ import { Board } from "./components/Board";
 export const ThemeContext = createContext();
 
 export default function App() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
 
   function toggleTheme() {
-    theme == "light" ? setTheme("dark") : setTheme("light");
+    const newTheme = theme == "light" ? "dark" : "light";
+    console.log(newTheme);
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   }
 
   return (

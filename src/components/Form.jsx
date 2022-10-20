@@ -39,6 +39,9 @@ export const Form = ({ handleSubmit }) => {
     if (mines < inputArray[2].min || mines == "")
       mineMessage = `Mines should be greater than ${inputArray[2].min}`;
 
+    if (mines >= rows * columns)
+      mineMessage = `Mines cannot be greater than the number of cells`;
+
     rowMessage || columnMessage || mineMessage
       ? setDisableSubmit(true)
       : setDisableSubmit(false);
