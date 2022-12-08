@@ -67,6 +67,7 @@ export const styles = {
       },
       wallButton: {
         background: colors.dark.contrast,
+        color: "purple",
       },
     },
     TileStyles: {
@@ -99,7 +100,7 @@ export const styles = {
         background: "skyblue",
       },
       formSubmit: {
-        background: "grey",
+        background: "rgb(22, 0, 59)",
         color: "whitesmoke",
       },
     },

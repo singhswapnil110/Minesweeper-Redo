@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import { useEffect } from "react";
 import { useClickOutside, useTheme } from "../customHooks";
 import { styles } from "../styles/themeStyles";
 

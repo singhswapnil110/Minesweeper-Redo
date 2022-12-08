@@ -34,7 +34,7 @@
 
   .modal-form[visible="true"] {
     opacity: 1;
-    transition: opacity 5s;
+    transition: opacity 1s;
   }
 
   .modal-button-group {
